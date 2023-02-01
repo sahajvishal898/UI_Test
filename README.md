@@ -1,4 +1,4 @@
-# _Travel Log_
+# _Shape Tracker_
 
 #### By _Ashe Urban & Vera Weikel_
 
