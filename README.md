@@ -1,8 +1,10 @@
-# _Shape Tracker_
+# _JavaScript Template_
+
+## EDIT BEFORE COMMITING
 
 #### By _Ashe Urban & Vera Weikel_
 
-#### _Shape Tracker, As Presented in Lessons 3-39 of TDD and Environments with JavaScript_
+#### _This project is serving as a template respository for future work_
 
 ## Technologies Used
 
@@ -17,15 +19,22 @@
 
 ## Description
 
-_Over the course of this section, we will build an application called Shape Tracker based on the Triangle Tracker project from the Introduction to Programming course. There's a good chance you have a repo with your own triangle project, but even if you don't (or it's not working), don't worry. We will walk through the project step by step._
+_This project template was built off of Epicodus' lessons on TDD and js environments_
+
+_As such, there are tests and js files for a triangle and rectangle constructor, these should be updated per project._
 
 _Lesson prompt:_ https://www.learnhowtoprogram.com/intermediate-javascript/test-driven-development-and-environments-with-javascript/basic-project-structure
 
 ## Setup/Installation Requirements
 
 - _Clone or download to your local repository_
+- _Update titles in package.json and webpack.config.js to reflect new project title_
+- _Update README.md with correct project information_
+- _Ensure proper files are disallowed in .gitignore_
+- _git init a new local directory and create a new repository in github_
 - _run npm install_
 - _npm run start to build and launch server_
+- _proceed to update files to reflect new project_
 
 ## Known Bugs
 
