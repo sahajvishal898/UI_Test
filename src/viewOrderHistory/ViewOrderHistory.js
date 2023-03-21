@@ -1,3 +1,4 @@
+import APIService from "../APIService";
 
 const viewHistoryButton = document.getElementById("viewHistory")
 viewHistoryButton.onclick = function() {
@@ -11,8 +12,9 @@ viewHistoryButton.onclick = function() {
 export default class OrderHistory{
 
     getOrderHistory() {
+        const apiService=new APIService(fetch)
         var userName = window.localStorage.getItem("userId")
-        fetch(`http://localhost:8080/user/${userName}/order`)
+        apiService.makeGetRequest(`http://localhost:8080/user/${userName}/order`)
              .then(function (response) {
                  return response.json();
              }).then(function (apiJsonData) {
