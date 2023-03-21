@@ -1,26 +1,32 @@
 
-
-   function getOrderHistory() {
-        var userName = window.localStorage.getItem("userId")
-        fetch(`http://localhost:8080/user/${userName}/order`)
-             .then(function (response) {
-                 return response.json();
-             }).then(function (apiJsonData) {
-                 let table=new HistoryTable()
-                 table.renderDataInTheTable(apiJsonData);
-             })
-    }
-
-
-
-
 const viewHistoryButton = document.getElementById("viewHistory")
 viewHistoryButton.onclick = function() {
 
-    getOrderHistory();
+    let orderHistory=new OrderHistory()
+    orderHistory.getOrderHistory()
 
 };
 
+
+export default class OrderHistory{
+
+    async getTableData(userName) {
+        const response = await fetch(`http://localhost:8080/user/${userName}/order`);
+        return await response.json();
+    }
+
+    getOrderHistory() {
+        
+        var userName = window.localStorage.getItem("userId")
+        const tableData=this.getTableData(userName)
+
+        let table=new HistoryTable()
+        table.renderDataInTheTable(tableData);
+     
+
+    }
+
+}
 
 class HistoryTable{
 

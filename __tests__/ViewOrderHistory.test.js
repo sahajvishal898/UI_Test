@@ -19,8 +19,8 @@ describe('ViewOrderService', () => {
     const mockFetch = jest.fn().mockImplementation(() => mockFetchPromise);
     fetch = mockFetch;
 
-    const viewOrderService = new ViewOrderService();
-    let response=await viewOrderService.viewOrderServiceFetch();
+    const orderHistory = new OrderHistory();
+    let response=await orderHistory.getOrderHistory();
 
     expect(response).toBe(mockResponse)
     expect(mockFetch).toHaveBeenCalledWith('http://localhost:8080/user/satyam/order');
