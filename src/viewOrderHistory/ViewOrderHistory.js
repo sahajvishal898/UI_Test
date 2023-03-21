@@ -1,6 +1,6 @@
 
 
-class OrderHistory{
+export default class ViewOrderHistory{
 
 
     async getTableData(userName){
@@ -23,14 +23,14 @@ class OrderHistory{
 }
 
 
-let orderHistory=new OrderHistory();
-const viewHistoryButton = document.getElementById("viewHistory")
-viewHistoryButton.onclick = function() {
+// let orderHistory=new OrderHistory();
+// const viewHistoryButton = document.getElementById("viewHistory")
+// viewHistoryButton.onclick = function() {
 
    
-    orderHistory.getOrderHistory();
+//     orderHistory.getOrderHistory();
 
-};
+// };
 
 
 class HistoryTable{

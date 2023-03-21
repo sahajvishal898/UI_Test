@@ -1,14 +1,6 @@
-import ViewOrderService from '../src/viewOrderHistory/ViewOrderService'
+import ViewOrderHistory from '../src/viewOrderHistory/ViewOrderHistory'
 
-describe('ViewOrderService', () => {
-  beforeEach(() => {
-    window.localStorage.setItem('userId', 'satyam');
-    
-  });
-
-  afterEach(() => {
-    window.localStorage.clear();``
-  });
+describe('ViewOrderHistory', () => {
 
   it('fetches the user order data from the API', async () => {
     const mockResponse = [{ id: 1, name: 'Order 1' }, { id: 2, name: 'Order 2' }];
@@ -18,9 +10,10 @@ describe('ViewOrderService', () => {
     });
     const mockFetch = jest.fn().mockImplementation(() => mockFetchPromise);
     fetch = mockFetch;
-
-    const orderHistory = new OrderHistory();
-    let response=await orderHistory.getOrderHistory();
+    
+    const viewOrderHistory = new ViewOrderHistory();
+    
+    let response=await viewOrderHistory.getTableData("satyam");
 
     expect(response).toBe(mockResponse)
     expect(mockFetch).toHaveBeenCalledWith('http://localhost:8080/user/satyam/order');
