@@ -1,8 +1,6 @@
 
 
-class OrderHistory{
-
-    getOrderHistory() {
+   function getOrderHistory() {
         var userName = window.localStorage.getItem("userId")
         fetch(`http://localhost:8080/user/${userName}/order`)
              .then(function (response) {
@@ -12,15 +10,14 @@ class OrderHistory{
                  table.renderDataInTheTable(apiJsonData);
              })
     }
-}
 
 
-let orderHistory=new OrderHistory();
+
+
 const viewHistoryButton = document.getElementById("viewHistory")
 viewHistoryButton.onclick = function() {
 
-   
-    orderHistory.getOrderHistory();
+    getOrderHistory();
 
 };
 

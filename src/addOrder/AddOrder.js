@@ -5,7 +5,6 @@ const price = document.getElementById("price");
 var esopType = document.getElementById("esopType")
 console.log("hi")
 
-const fetch=require("node-fetch")
 
 export default class PlaceOrder {
 
