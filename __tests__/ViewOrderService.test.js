@@ -21,6 +21,7 @@ describe('ViewOrderService', () => {
     const viewOrderService = new ViewOrderService();
     let response=await viewOrderService.viewOrderServiceFetch();
 
+    expect(response).toBe(mockResponse)
     expect(mockFetch).toHaveBeenCalledWith('http://localhost:8080/user/satyam/order');
     expect(global.fetch).toHaveBeenCalledTimes(1);
   });
