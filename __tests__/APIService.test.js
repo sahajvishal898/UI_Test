@@ -1,16 +1,29 @@
 
 import APIService from "../src/APIService";
 
-class fetchStub {
+class fetchRejectStub {
   get(path) {
-    return Promise.reject("Something happened");
+    return Promise.reject("Error");
   }
 }
 
-it("thrpow error", () => {
-  const apiService = new APIService(new fetchStub);
+class fetchResolveStub {
+  get(path) {
+    return Promise.resolve("Something happened");
+  }
+}
 
-  expect(apiService.makeGetRequest(" ")).rejects.toEqual("Something happened");
+
+it("makeGetRequest should return a rejected promise", () => {
+  const apiService = new APIService(new fetchRejectStub);
+
+  expect(apiService.makeGetRequest(" ")).rejects.toEqual("Error");
+});
+
+it("makeGetRequest should return a resolved promise ", () => {
+  const apiService = new APIService(new fetchResolveStub);
+
+  expect(apiService.makeGetRequest(" ")).resolves.toEqual("Something happened");
 });
 
 
