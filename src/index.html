@@ -1,29 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>JavaScript Template</title>
+    <meta charset="UTF-8">
+    <title>ESOPS Trading Platform</title>
+    <link href="index.css" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
-  <h1>Shape Tracker</h1>
-  <h3>Enter three lengths to determine if they can make a triangle.</h3>
-  <form id="triangle-checker-form">
-    <label for="length1">Enter a number:</label>
-    <input id="length1" type="number">
-    <label for="length2">Enter a number:</label>
-    <input id="length2" type="number">
-    <label for="length3">Enter a number:</label>
-    <input id="length3" type="number">
-    <button type="submit">Submit</button>
-  </form>
-  <ul id="response"></ul>
-  <h3>Enter the lengths of a rectangle's two sides to determine its area.</h3>
-  <form id="rectangle-area-form">
-    <label for="rect-length1">Enter a number:</label>
-    <input id="rect-length1" type="number">
-    <label for="rect-length2">Enter a number:</label>
-    <input id="rect-length2" type="number">
-    <button type="submit">Submit</button>
-  </form>
-  <ul id="response2"></ul>
+    <h1>ESOPS Trading Platform</h1>
+
+    <div class ="userName">
+        <table>
+            <td><label for="fname"  >UserName</label></td>
+            <td><input type="text" id="fname" name="fname" placeholder="Enter userName" ></td>
+            <td><button class= "fieldName" onclick="inputStorage()" >Add UserName</button></td>
+        </table>
+
+    </div>
+
+    <div class="container">
+    <button class="block1" onclick="addOrder()" >Place Order </button>&nbsp;&nbsp;&nbsp
+    <button class= "block2" onclick="viewOrders()" >View Order History</button>
+    </div>
+
+    <script>
+        function addOrder() {
+            location.href = location.href = "addOrder/AddOrder.html";
+        }
+        function viewOrders() {
+            location.href = location.href = "viewOrderHistory/viewOrderHistory.html";
+        }
+
+        function inputStorage() {
+           const userId = document.getElementById("fname").value;
+            window.localStorage.setItem("userId",userId)
+        }
+
+    </script>
 </body>
+
 </html>

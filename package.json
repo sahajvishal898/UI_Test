@@ -9,7 +9,6 @@
     "lint": "eslint src/*.js",
     "test": "jest --coverage"
   },
-
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -29,6 +28,8 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.6",
-    "bootstrap": "^5.2.3"
+    "bootstrap": "^5.2.3",
+    "chai": "^4.3.7",
+    "node-fetch": "^3.3.1"
   }
 }
