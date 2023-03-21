@@ -1,14 +1,6 @@
 
-const viewHistoryButton = document.getElementById("viewHistory")
-viewHistoryButton.onclick = function() {
 
-    let orderHistory=new OrderHistory()
-    orderHistory.getOrderHistory()
-
-};
-
-
-export default class OrderHistory{
+class OrderHistory{
 
     getOrderHistory() {
         var userName = window.localStorage.getItem("userId")
@@ -16,12 +8,22 @@ export default class OrderHistory{
              .then(function (response) {
                  return response.json();
              }).then(function (apiJsonData) {
-                 console.log(apiJsonData);
                  let table=new HistoryTable()
                  table.renderDataInTheTable(apiJsonData);
              })
     }
 }
+
+
+let orderHistory=new OrderHistory();
+const viewHistoryButton = document.getElementById("viewHistory")
+viewHistoryButton.onclick = function() {
+
+   
+    orderHistory.getOrderHistory();
+
+};
+
 
 class HistoryTable{
 

@@ -2,7 +2,7 @@ import ViewOrderService from '../src/viewOrderHistory/ViewOrderService'
 
 describe('ViewOrderService', () => {
   beforeEach(() => {
-    window.localStorage.setItem('userId', '123');
+    window.localStorage.setItem('userId', 'satyam');
   });
 
   afterEach(() => {
@@ -19,9 +19,9 @@ describe('ViewOrderService', () => {
     fetch = mockFetch;
 
     const viewOrderService = new ViewOrderService();
-    await viewOrderService.viewOrderServiceFetch();
+    let response=await viewOrderService.viewOrderServiceFetch();
 
-    expect(mockFetch).toHaveBeenCalledWith('http://localhost:8080/user/123/order');
+    expect(mockFetch).toHaveBeenCalledWith('http://localhost:8080/user/satyam/order');
     expect(global.fetch).toHaveBeenCalledTimes(1);
   });
 });
