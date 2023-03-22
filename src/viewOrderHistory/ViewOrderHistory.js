@@ -5,10 +5,21 @@ export default class ViewOrderHistory{
 
     async getTableData(userName){
 
-       return fetch(`http://localhost:8080/user/${userName}/order`)
-             .then(function (response) {
-                 return response.json();
-             })
+        return fetch(`http://localhost:8080/user/${userName}/order`)
+              .then((response)=>response.json())
+              .then((json)=> this.checkError(json))
+              .then((data)=> {return data})
+              .catch((error)=>{
+                 errorAlert(error);
+                 return "error"
+              })
+     }
+
+    checkError(json){
+        if(json.error)
+            return Promise.reject(json.error);
+        else
+           return Promise.resolve(json)
     }
 
     async getOrderHistory() {
@@ -16,6 +27,8 @@ export default class ViewOrderHistory{
 
         const data=await this.getTableData(userName)
         console.log(data)
+        if(data=="error")
+            return
         let table=new HistoryTable()
         table.renderDataInTheTable(data);
     }
@@ -26,10 +39,16 @@ let viewOrderHistory=new ViewOrderHistory();
 const viewHistoryButton = document.getElementById("viewHistory")
 viewHistoryButton.onclick = function() {
 
-   
     viewOrderHistory.getOrderHistory();
 
 };
+
+
+
+
+window.errorAlert = function errorAlert(error) {
+    window.alert(error);
+}
 
 
 class HistoryTable{

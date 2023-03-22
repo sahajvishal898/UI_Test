@@ -17,7 +17,6 @@ window.buySellCheck = function buySellCheck() {
         document.getElementById("esopType").checked = "NORMAL"
 
     }
-
 }
 
 export default class PlaceOrder {
@@ -38,10 +37,9 @@ export default class PlaceOrder {
                 content
 
         })
-            .then((response) => response.json())
-            .then((json) => this.getOutputOfRequest(json)
-            )
-
+        .then((response) => response.json())
+        .then((json) => this.getOutputOfRequest(json))
+        .catch(()=>console.log("problem"))
     }
 
 
