@@ -17,11 +17,13 @@ export default class ViewOrderHistory{
 
     checkError(json){
         if(json.error)
+        {
             return Promise.reject(json.error);
-        else
-           return Promise.resolve(json)
+        }
+        else{
+            return Promise.resolve(json)
+        }
     }
-
     async getOrderHistory() {
         var userName = window.localStorage.getItem("userId")
 
@@ -35,13 +37,13 @@ export default class ViewOrderHistory{
 }
 
 
-let viewOrderHistory=new ViewOrderHistory();
-const viewHistoryButton = document.getElementById("viewHistory")
-viewHistoryButton.onclick = function() {
+// let viewOrderHistory=new ViewOrderHistory();
+// const viewHistoryButton = document.getElementById("viewHistory")
+// viewHistoryButton.onclick = function() {
 
-    viewOrderHistory.getOrderHistory();
+//     viewOrderHistory.getOrderHistory();
 
-};
+// };
 
 
 

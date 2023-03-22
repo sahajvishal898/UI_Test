@@ -15,13 +15,12 @@ window.buySellCheck = function buySellCheck() {
         type = "SELL"
         document.getElementById("esopType").disabled = false
         document.getElementById("esopType").checked = "NORMAL"
-
     }
 }
 
 export default class PlaceOrder {
 
-    placeOrder() {
+    async createOrder() {
 
         var content = this.getJson()
 
@@ -89,11 +88,11 @@ export default class PlaceOrder {
 }
 
 
-form.addEventListener("submit", function (event) {
-    event.preventDefault();
-    let order = new PlaceOrder()
-    order.placeOrder()
-});
+// form.addEventListener("submit", function (event) {
+//     event.preventDefault();
+//     let order = new PlaceOrder()
+//     order.placeOrder()
+// });
 
 
 

@@ -32,10 +32,35 @@ describe('ViewOrderHistory', () => {
 
         const viewOrderHistory = new ViewOrderHistory();
 
-        let response = await viewOrderHistory.getTableData("sayam");
+        let response = await viewOrderHistory.getTableData("vishal");
 
         expect(response).toBe(mockResponse)
         expect(mockFetch).not.toHaveBeenCalledWith('http://localhost:8080/user/satyam/order');
         expect(global.fetch).toHaveBeenCalledTimes(1);
     });
+
+
+    it('should return reject when error json is send', () => {
+        const errorMessage="not registered"
+        const viewOrderHistory = new ViewOrderHistory();
+        
+        var data =  '{'
+        +'"error" : "not registered"'
+        +'}';
+
+        return expect(viewOrderHistory.checkError(JSON.parse(data))).rejects.toEqual(errorMessage);
+      });
+
+
+
+      it('should return resolve when correct json is send', () => {
+        const response="5"
+        const viewOrderHistory = new ViewOrderHistory();
+        
+        var data =  '{'
+        +'"price" : "5"'
+        +'}';
+
+        return expect(viewOrderHistory.checkError(JSON.parse(data))).resolves.toEqual(JSON.parse(data));
+      });
 });
