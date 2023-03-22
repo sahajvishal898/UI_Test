@@ -1,37 +1,37 @@
 
 
-export default class ViewOrderHistory{
+export default class ViewOrderHistory {
 
 
-    async getTableData(userName){
+    async getTableData(userName) {
 
         return fetch(`http://localhost:8080/user/${userName}/order`)
-              .then((response)=>response.json())
-              .then((json)=> this.checkError(json))
-              .then((data)=> {return data})
-              .catch((error)=>{
-                 errorAlert(error);
-                 return "error"
-              })
-     }
+            .then((response) => response.json())
+            .then((json) => this.checkError(json))
+            .then((data) => { return data })
+            .catch((error) => {
+                errorAlert(error);
+                return "error"
+            })
+    }
 
-    checkError(json){
-        if(json.error)
-        {
+    checkError(json) {
+        if (json.error) {
             return Promise.reject(json.error);
         }
-        else{
+        else {
             return Promise.resolve(json)
         }
     }
+
     async getOrderHistory() {
         var userName = window.localStorage.getItem("userId")
 
-        const data=await this.getTableData(userName)
+        const data = await this.getTableData(userName)
         console.log(data)
-        if(data=="error")
+        if (data == "error")
             return
-        let table=new HistoryTable()
+        let table = new HistoryTable()
         table.renderDataInTheTable(data);
     }
 }
@@ -53,75 +53,75 @@ window.errorAlert = function errorAlert(error) {
 }
 
 
-class HistoryTable{
+class HistoryTable {
 
     renderDataInTheTable(orders) {
 
         const mytable = document.getElementById("html-data-table");
 
 
-              mytable.innerHTML = "";
+        mytable.innerHTML = "";
 
 
-               let newRow=this.createTableHeading();
+        let newRow = this.createTableHeading();
 
-               mytable.appendChild(newRow);
+        mytable.appendChild(newRow);
 
 
         orders.forEach(order => {
             let newRow = document.createElement("tr");
 
-                let cell = document.createElement("td");
-                cell.innerText = order["id"].first;
-                newRow.appendChild(cell);
+            let cell = document.createElement("td");
+            cell.innerText = order["id"].first;
+            newRow.appendChild(cell);
 
-                 cell = document.createElement("td");
-                 cell.innerText = order["type"];
-                 newRow.appendChild(cell);
-
-
-                cell = document.createElement("td");
-                cell.innerText = "NON-PERFORMANCE"
-                if(order["esopType"]==1)
-                   cell.innerText = "PERFORMANCE"
-                newRow.appendChild(cell);
+            cell = document.createElement("td");
+            cell.innerText = order["type"];
+            newRow.appendChild(cell);
 
 
+            cell = document.createElement("td");
+            cell.innerText = "NON-PERFORMANCE"
+            if (order["esopType"] == 1)
+                cell.innerText = "PERFORMANCE"
+            newRow.appendChild(cell);
 
-                cell = document.createElement("td");
-                cell.innerText = order["qty"];
-                newRow.appendChild(cell);
 
 
-                cell = document.createElement("td");
-                cell.innerText = order["price"];
-                newRow.appendChild(cell);
+            cell = document.createElement("td");
+            cell.innerText = order["qty"];
+            newRow.appendChild(cell);
 
-                cell = document.createElement("td");
-                cell.innerText = order["status"];
-                newRow.appendChild(cell);
 
-                cell = document.createElement("td");
-                cell.innerText = order["filledQty"];
-                newRow.appendChild(cell);
+            cell = document.createElement("td");
+            cell.innerText = order["price"];
+            newRow.appendChild(cell);
 
-                cell = document.createElement("td");
-                cell.innerText = "unfilledOrder"
-                 if(order["filled"]){
-                 let x=new FilledTable()
-                 cell = x.createTableForTransaction(order["filled"])
-                 console.log(typeof(order["filled"][0].price))
-                 //cell.innerText = createTableForTransaction()
+            cell = document.createElement("td");
+            cell.innerText = order["status"];
+            newRow.appendChild(cell);
 
-                }
-                newRow.appendChild(cell);
+            cell = document.createElement("td");
+            cell.innerText = order["filledQty"];
+            newRow.appendChild(cell);
+
+            cell = document.createElement("td");
+            cell.innerText = "unfilledOrder"
+            if (order["filled"]) {
+                let x = new FilledTable()
+                cell = x.createTableForTransaction(order["filled"])
+                console.log(typeof (order["filled"][0].price))
+                //cell.innerText = createTableForTransaction()
+
+            }
+            newRow.appendChild(cell);
 
             mytable.appendChild(newRow);
         });
     }
 
 
-    createTableHeading(){
+    createTableHeading() {
 
         let newRow = document.createElement("tr");
 
@@ -159,15 +159,15 @@ class HistoryTable{
         newRow.appendChild(cell);
 
         return newRow;
-}
+    }
 }
 
-class FilledTable{
+class FilledTable {
 
     createTableForTransaction(filledOrder) {
         const table = document.createElement("table");
-        table.id="transTable"
-        table.class="tableFixHead"
+        table.id = "transTable"
+        table.class = "tableFixHead"
         const tableBody = document.createElement("tbody");
 
         const newRow = document.createElement("tr");

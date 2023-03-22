@@ -41,26 +41,26 @@ describe('ViewOrderHistory', () => {
 
 
     it('should return reject when error json is send', () => {
-        const errorMessage="not registered"
+        const errorMessage = "not registered"
         const viewOrderHistory = new ViewOrderHistory();
-        
-        var data =  '{'
-        +'"error" : "not registered"'
-        +'}';
+
+        var data = '{'
+            + '"error" : "not registered"'
+            + '}';
 
         return expect(viewOrderHistory.checkError(JSON.parse(data))).rejects.toEqual(errorMessage);
-      });
+    });
 
 
 
-      it('should return resolve when correct json is send', () => {
-        const response="5"
+    it('should return resolve when correct json is send', () => {
+        const response = "5"
         const viewOrderHistory = new ViewOrderHistory();
-        
-        var data =  '{'
-        +'"price" : "5"'
-        +'}';
+
+        var data = '{'
+            + '"price" : "5"'
+            + '}';
 
         return expect(viewOrderHistory.checkError(JSON.parse(data))).resolves.toEqual(JSON.parse(data));
-      });
+    });
 });
