@@ -22,14 +22,14 @@ export default class ViewOrderHistory{
 }
 
 
-// let viewOrderHistory=new ViewOrderHistory();
-// const viewHistoryButton = document.getElementById("viewHistory")
-// viewHistoryButton.onclick = function() {
+let viewOrderHistory=new ViewOrderHistory();
+const viewHistoryButton = document.getElementById("viewHistory")
+viewHistoryButton.onclick = function() {
 
    
-//     viewOrderHistory.getOrderHistory();
+    viewOrderHistory.getOrderHistory();
 
-// };
+};
 
 
 class HistoryTable{

@@ -1,10 +1,24 @@
 const form = document.getElementById("form1");
 const qty = document.getElementById("quantity");
-var type
+var type = "BUY"
 const price = document.getElementById("price");
 var esopType = document.getElementById("esopType")
 console.log("hi")
 
+window.buySellCheck = function buySellCheck() {
+    if (document.getElementById('buy').checked) {
+        type = "BUY"
+        document.getElementById("esopType").disabled = true
+
+    }
+    else {
+        type = "SELL"
+        document.getElementById("esopType").disabled = false
+        document.getElementById("esopType").checked = "NORMAL"
+
+    }
+
+}
 
 export default class PlaceOrder {
 
@@ -84,17 +98,4 @@ form.addEventListener("submit", function (event) {
 });
 
 
-function buySellCheck() {
-    if (document.getElementById('buy').checked) {
-        type = "BUY"
-        document.getElementById("esopType").disabled = true
 
-    }
-    else {
-        type = "SELL"
-        document.getElementById("esopType").disabled = false
-        document.getElementById("esopType").checked = "NORMAL"
-
-    }
-
-}
