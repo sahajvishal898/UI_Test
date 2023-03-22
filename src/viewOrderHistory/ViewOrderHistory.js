@@ -16,19 +16,18 @@ export default class ViewOrderHistory{
 
         const data=await this.getTableData(userName)
         console.log(data)
-                 let table=new HistoryTable()
-                 table.renderDataInTheTable(data);
-
+        let table=new HistoryTable()
+        table.renderDataInTheTable(data);
     }
 }
 
 
-// let orderHistory=new OrderHistory();
+// let viewOrderHistory=new ViewOrderHistory();
 // const viewHistoryButton = document.getElementById("viewHistory")
 // viewHistoryButton.onclick = function() {
 
    
-//     orderHistory.getOrderHistory();
+//     viewOrderHistory.getOrderHistory();
 
 // };
 
