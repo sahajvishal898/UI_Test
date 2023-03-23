@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import APIService from "../src/APIService";
 
 describe("APIService Test", function(){

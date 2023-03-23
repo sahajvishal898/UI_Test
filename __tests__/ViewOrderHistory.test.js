@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import {ViewOrderHistory,HistoryTable} from '../src/viewOrderHistory/ViewOrderHistory'
 
 describe('ViewOrderHistory', () => {

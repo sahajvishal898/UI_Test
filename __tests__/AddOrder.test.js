@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import PlaceOrder from '../src/addOrder/AddOrder'
 
 describe('AddOrder', () => {
