@@ -1,8 +1,4 @@
-
-
- class ViewOrderHistory {
-
-
+class ViewOrderHistory {
     async getTableData(userName) {
 
         return fetch(`http://localhost:8080/user/${userName}/order`)
@@ -36,10 +32,7 @@
     }
 }
 
-
-
 window.onload = function () {
-
     let viewOrderHistory = new ViewOrderHistory();
     const viewHistoryButton = document.getElementById("viewHistory")
     viewHistoryButton.onclick = function () {
@@ -50,33 +43,19 @@ window.onload = function () {
 }
 
 
-
-
-
-
 window.errorAlert = function errorAlert(error) {
     window.alert(error);
 }
 
 
- class HistoryTable {
-
+class HistoryTable {
     renderDataInTheTable(orders) {
-
         const mytable = document.getElementById("html-data-table");
-
-
         mytable.innerHTML = "";
-
-
         let newRow = this.createTableHeading();
-
         mytable.appendChild(newRow);
-
-
         orders.forEach(order => {
             let newRow = document.createElement("tr");
-
             let cell = document.createElement("td");
             cell.innerText = order["id"].first;
             newRow.appendChild(cell);
@@ -85,19 +64,15 @@ window.errorAlert = function errorAlert(error) {
             cell.innerText = order["type"];
             newRow.appendChild(cell);
 
-
             cell = document.createElement("td");
             cell.innerText = "NON-PERFORMANCE"
             if (order["esopType"] == 1)
                 cell.innerText = "PERFORMANCE"
             newRow.appendChild(cell);
 
-
-
             cell = document.createElement("td");
             cell.innerText = order["qty"];
             newRow.appendChild(cell);
-
 
             cell = document.createElement("td");
             cell.innerText = order["price"];
@@ -126,9 +101,7 @@ window.errorAlert = function errorAlert(error) {
         });
     }
 
-
     createTableHeading() {
-
         let newRow = document.createElement("tr");
 
         let cell = document.createElement("th");
@@ -211,18 +184,11 @@ class FilledTable {
 
         return table
     }
-
-
-
-
-
 }
-
-
 
 export {
     ViewOrderHistory,
     HistoryTable,
     FilledTable
-  }
+}
 

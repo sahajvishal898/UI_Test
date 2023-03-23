@@ -64,16 +64,16 @@ describe('ViewOrderHistory', () => {
     });
 
     it('should return the correct table head', ()=>{
-      const historyTable = new HistoryTable();
-      const headerRow = historyTable.createTableHeading()
       const headerList = []
       const expectedList = ['OrderId', 'Type', 'EsopType', 'Quantity', 'Price', 'Status', 'FilledQty', 'Filled']
-
-      const expectedHeaderRow=document.createElement("tr")    
+      
+      const historyTable = new HistoryTable();
+      const headerRow = historyTable.createTableHeading()
       for (const header of headerRow.cells )
       {
         headerList.push(header.innerText);
       }
+
       expect(headerList).toEqual(expectedList);
     });
 });
