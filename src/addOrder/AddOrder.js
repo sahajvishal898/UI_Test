@@ -88,11 +88,11 @@ export default class PlaceOrder {
 }
 
 
-// form.addEventListener("submit", function (event) {
-//     event.preventDefault();
-//     let order = new PlaceOrder()
-//     order.placeOrder()
-// });
+form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    let order = new PlaceOrder()
+    order.createOrder()
+});
 
 
 
