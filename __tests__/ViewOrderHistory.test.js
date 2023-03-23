@@ -1,4 +1,4 @@
-import ViewOrderHistory from '../src/viewOrderHistory/ViewOrderHistory'
+import {ViewOrderHistory,HistoryTable} from '../src/viewOrderHistory/ViewOrderHistory'
 
 describe('ViewOrderHistory', () => {
 
@@ -62,5 +62,19 @@ describe('ViewOrderHistory', () => {
             + '}';
 
         return expect(viewOrderHistory.checkError(JSON.parse(data))).resolves.toEqual(JSON.parse(data));
+    });
+
+    it('should return the correct table head', ()=>{
+      const historyTable = new HistoryTable();
+      const headerRow = historyTable.createTableHeading()
+      const headerList = []
+      const expectedList = ['OrderId', 'Type', 'EsopType', 'Quantity', 'Price', 'Status', 'FilledQty', 'Filled']
+
+      const expectedHeaderRow=document.createElement("tr")    
+      for (const header of headerRow.cells )
+      {
+        headerList.push(header.innerText);
+      }
+      expect(headerList).toEqual(expectedList);
     });
 });

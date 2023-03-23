@@ -1,6 +1,6 @@
 
 
-export default class ViewOrderHistory {
+ class ViewOrderHistory {
 
 
     async getTableData(userName) {
@@ -53,7 +53,7 @@ window.errorAlert = function errorAlert(error) {
 }
 
 
-class HistoryTable {
+ class HistoryTable {
 
     renderDataInTheTable(orders) {
 
@@ -214,5 +214,9 @@ class FilledTable {
 
 
 
-
+export {
+    ViewOrderHistory,
+    HistoryTable,
+    FilledTable
+  }
 
