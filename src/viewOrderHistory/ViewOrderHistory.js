@@ -93,7 +93,6 @@ class HistoryTable {
                 cell = x.createTableForTransaction(order["filled"])
                 console.log(typeof (order["filled"][0].price))
                 //cell.innerText = createTableForTransaction()
-
             }
             newRow.appendChild(cell);
 
@@ -175,8 +174,6 @@ class FilledTable {
 
             tableBody.appendChild(newRow);
         }
-
-
 
         table.appendChild(tableBody);
 
