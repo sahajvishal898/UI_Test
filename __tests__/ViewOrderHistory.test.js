@@ -14,7 +14,6 @@ describe('ViewOrderHistory', () => {
         const viewOrderHistory = new ViewOrderHistory();
 
         let response = await viewOrderHistory.getTableData("satyam");
-
         expect(response).toBe(mockResponse)
         expect(mockFetch).toHaveBeenCalledWith('http://localhost:8080/user/satyam/order');
         expect(global.fetch).toHaveBeenCalledTimes(1);

@@ -20,14 +20,10 @@ window.buySellCheck = function buySellCheck() {
 
 export default class PlaceOrder {
 
-    async createOrder() {
 
-        var content = this.getJson()
+     async callFetchRequest(userName,content){
 
-
-        var userName = window.localStorage.getItem("userId")
-        console.log(userName);
-        fetch(`http://localhost:8080/user/${userName}/order`, {
+        return fetch(`http://localhost:8080/user/${userName}/order`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
@@ -37,27 +33,40 @@ export default class PlaceOrder {
 
         })
         .then((response) => response.json())
-        .then((json) => this.getOutputOfRequest(json))
-        .catch(()=>console.log("problem"))
+        .then((data)=>{return data})
+        .catch((error)=>{return error})
     }
 
+
+
+    async createOrder() {
+
+        var content = this.getJson()
+
+
+        var userName = window.localStorage.getItem("userId")
+       
+        const responseData=await this.callFetchRequest(userName,content)
+
+        this.getOutputOfRequest(responseData)
+        .then((data)=>{
+            document.getElementById("message").style.color = "green";
+            document.getElementById("message").innerHTML = "Order Placed";
+            document.getElementById("esopType").disabled = false
+        })
+        .catch((error)=>{
+            document.getElementById("message").innerHTML = error
+            document.getElementById("message").style.color = "red";
+        })
+    }
 
     getOutputOfRequest(json){
 
             console.log(json);
-            if (json.error) {
-                document.getElementById("message").innerHTML = json.error
-                document.getElementById("message").style.color = "red";
-                return Promise.reject(json)
-            }
-            else {
-                document.getElementById("message").style.color = "green";
-                document.getElementById("message").innerHTML = "Order Placed";
-                document.getElementById("esopType").disabled = false
+            if (json.error) 
+                return Promise.reject(json.error)
+            else 
                 return Promise.resolve(json)
-            }
-
-
     }
 
 
@@ -88,11 +97,11 @@ export default class PlaceOrder {
 }
 
 
-form.addEventListener("submit", function (event) {
-    event.preventDefault();
-    let order = new PlaceOrder()
-    order.createOrder()
-});
+// form.addEventListener("submit", function (event) {
+//     event.preventDefault();
+//     let order = new PlaceOrder()
+//     order.createOrder()
+// });
 
 
 
