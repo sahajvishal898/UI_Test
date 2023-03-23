@@ -21,7 +21,7 @@ describe('ViewOrderHistory', () => {
     });
 
 
-    it('fetches the user order data from the API', async () => {
+    it('should fetch the user order data from the API where username is vishal', async () => {
         const mockResponse = [{ id: 1, name: 'Order 1' }, { id: 2, name: 'Order 2' }];
         const mockJsonPromise = Promise.resolve(mockResponse);
         const mockFetchPromise = Promise.resolve({
