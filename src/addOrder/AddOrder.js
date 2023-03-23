@@ -3,7 +3,6 @@ const qty = document.getElementById("quantity");
 var type = "BUY"
 const price = document.getElementById("price");
 var esopType = document.getElementById("esopType")
-console.log("hi")
 
 window.buySellCheck = function buySellCheck() {
     if (document.getElementById('buy').checked) {
@@ -21,7 +20,7 @@ window.buySellCheck = function buySellCheck() {
 export default class PlaceOrder {
 
 
-     async callFetchRequest(userName,content){
+    async callFetchRequest(userName, content) {
 
         return fetch(`http://localhost:8080/user/${userName}/order`, {
             method: "POST",
@@ -32,9 +31,9 @@ export default class PlaceOrder {
                 content
 
         })
-        .then((response) => response.json())
-        .then((data)=>{return data})
-        .catch((error)=>{return error})
+            .then((response) => response.json())
+            .then((data) => { return data })
+            .catch((error) => { return error })
     }
 
 
@@ -45,28 +44,26 @@ export default class PlaceOrder {
 
 
         var userName = window.localStorage.getItem("userId")
-       
-        const responseData=await this.callFetchRequest(userName,content)
+
+        const responseData = await this.callFetchRequest(userName, content)
 
         this.getOutputOfRequest(responseData)
-        .then((data)=>{
-            document.getElementById("message").style.color = "green";
-            document.getElementById("message").innerHTML = "Order Placed";
-            document.getElementById("esopType").disabled = false
-        })
-        .catch((error)=>{
-            document.getElementById("message").innerHTML = error
-            document.getElementById("message").style.color = "red";
-        })
+            .then((data) => {
+                document.getElementById("message").style.color = "green";
+                document.getElementById("message").innerHTML = "Order Placed";
+                document.getElementById("esopType").disabled = false
+            })
+            .catch((error) => {
+                document.getElementById("message").innerHTML = error
+                document.getElementById("message").style.color = "red";
+            })
     }
 
-    getOutputOfRequest(json){
-
-            console.log(json);
-            if (json.error) 
-                return Promise.reject(json.error)
-            else 
-                return Promise.resolve(json)
+    getOutputOfRequest(json) {
+        if (json.error)
+            return Promise.reject(json.error)
+        else
+            return Promise.resolve(json)
     }
 
 
@@ -97,11 +94,14 @@ export default class PlaceOrder {
 }
 
 
-// form.addEventListener("submit", function (event) {
-//     event.preventDefault();
-//     let order = new PlaceOrder()
-//     order.createOrder()
-// });
+window.onload = function () {
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        let order = new PlaceOrder()
+        order.createOrder()
+    });
+}
+
 
 
 
