@@ -37,13 +37,19 @@
 }
 
 
-// let viewOrderHistory=new ViewOrderHistory();
-// const viewHistoryButton = document.getElementById("viewHistory")
-// viewHistoryButton.onclick = function() {
 
-//     viewOrderHistory.getOrderHistory();
+window.onload = function () {
 
-// };
+    let viewOrderHistory = new ViewOrderHistory();
+    const viewHistoryButton = document.getElementById("viewHistory")
+    viewHistoryButton.onclick = function () {
+
+        viewOrderHistory.getOrderHistory();
+
+    };
+}
+
+
 
 
 
